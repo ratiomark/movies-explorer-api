@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-
+const corss = require('cors')
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('./middleware/cors-middleware');
@@ -13,6 +13,7 @@ const { requestLogger, errorLogger } = require('./middleware/logger-middleware')
 mongoose.connect('mongodb://127.0.0.1:27017/movies');
 
 const app = express();
+app.use(corss())
 app.use(express.json());
 // app.use(cors);
 
