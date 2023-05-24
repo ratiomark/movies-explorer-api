@@ -13,7 +13,9 @@ const { requestLogger, errorLogger } = require('./middleware/logger-middleware')
 mongoose.connect('mongodb://127.0.0.1:27017/movies');
 
 const app = express();
-app.use(corss())
+app.use(corss({
+	origin: '*'
+}))
 app.use(express.json());
 // app.use(cors);
 
