@@ -13,10 +13,10 @@ const getMovies = async (req, res, next) => {
 
 const postMovie = async (req, res, next) => {
 	try {
-		const { country, director, duration, year, description, image, trailer, nameRU, nameEN, thumbnail, movieId } = req.body;
+		const { country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId } = req.body;
 		const { userId } = req;
 
-		const data = await Movie.create({ country, director, duration, year, description, image, trailer, nameRU, nameEN, thumbnail, movieId, owner: userId });
+		const data = await Movie.create({ country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId, owner: userId });
 		res.status(201).send({ data });
 	} catch (err) {
 		next(err);
