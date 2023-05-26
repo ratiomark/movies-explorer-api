@@ -32,11 +32,14 @@ const postMovieValidation = [
 ];
 
 const movieIdParamsValidation = [
-	param('movieId').custom((value) => {
-		if (!isValidObjectId(value)) throw ApiError.BadRequest();
-		return true;
-	}),
+	param('movieId').notEmpty()
 ];
+// const movieIdParamsValidation = [
+// 	param('movieId').custom((value) => {
+// 		if (!isValidObjectId(value)) throw ApiError.BadRequest();
+// 		return true;
+// 	}),
+// ];
 
 // user
 const patchUserDataValidation = [
