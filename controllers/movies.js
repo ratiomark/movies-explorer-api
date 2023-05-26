@@ -6,8 +6,9 @@ const getMovies = async (req, res, next) => {
 	try {
 		const { userId } = req;
 		const data = await Movie.find({ owner: userId });
-		data['id'] = data.movieId
-		res.send({ data });
+		const dataWithId = { ...data }
+		dataWithId['id'] = data.movieId
+		res.send({ data: dataWithId });
 	} catch (err) {
 		next(err);
 	}
