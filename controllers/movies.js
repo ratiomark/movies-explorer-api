@@ -6,12 +6,18 @@ const getMovies = async (req, res, next) => {
 	try {
 		const { userId } = req;
 		const data = await Movie.find({ owner: userId });
-		const dataWithId = data.map(item => {
-			const data2 = { ...item }
-			data2['id'] = item.movieId
-			return data2
-		})
-		res.send({ data: dataWithId });
+		// const dataWithId = data.map(item => {
+		// const data2 = { ...item }
+		// data2['id'] = item.movieId
+		// return data2
+		// })
+
+
+		const { movieId, ...otherData } = data._doc;
+		const newData = { id: movieId, ...otherData }
+		// res.status(200).json({ data: { ...otherData } });
+
+		res.send({ data: { ...newData } });
 	} catch (err) {
 		next(err);
 	}
