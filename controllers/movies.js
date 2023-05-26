@@ -5,6 +5,7 @@ const { ApiError } = require('../Errors/Errors');
 const getMovies = async (req, res, next) => {
 	try {
 		const data = await Movie.find({});
+		data['id'] = data.movieId
 		res.send({ data });
 	} catch (err) {
 		next(err);
@@ -16,7 +17,7 @@ const postMovie = async (req, res, next) => {
 		const { country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId } = req.body;
 		const { userId } = req;
 
-		const data = await Movie.create({ country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId, owner: userId });
+		const data = await Movie.create({ country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId: id, owner: userId });
 		res.status(201).send({ data });
 	} catch (err) {
 		next(err);
