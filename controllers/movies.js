@@ -16,8 +16,8 @@ const getMovies = async (req, res, next) => {
 		const { movieId, ...otherData } = data;
 		const newData = { id: movieId, ...otherData }
 		// res.status(200).json({ data: { ...otherData } });
-
-		res.send({ newData });
+		res.send({ data })
+		// res.send({ newData });
 	} catch (err) {
 		next(err);
 	}
