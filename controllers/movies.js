@@ -39,7 +39,7 @@ const deleteMovie = async (req, res, next) => {
 	try {
 		const { movieId } = req.params;
 		const { userId } = req;
-		const movie = await Movie.findById(movieId);
+		const movie = await Movie.findOne({ movieId });
 
 		if (!movie) throw ApiError.NotFound();
 		if (userId !== movie.owner.toString()) throw ApiError.Forbidden();
