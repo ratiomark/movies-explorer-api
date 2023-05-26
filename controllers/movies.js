@@ -6,7 +6,10 @@ const getMovies = async (req, res, next) => {
 	try {
 		const { userId } = req;
 		const data = await Movie.find({ owner: userId });
-		const dataWithId = data.map(item => item.id = item.movieId)
+		const dataWithId = data.map(item => {
+			item.id = item.movieId
+			return item
+		})
 		res.send({ data: dataWithId });
 	} catch (err) {
 		next(err);
