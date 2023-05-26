@@ -13,7 +13,7 @@ const getMovies = async (req, res, next) => {
 		// })
 
 
-		const { movieId, ...otherData } = data._doc;
+		const { movieId, ...otherData } = data;
 		const newData = { id: movieId, ...otherData }
 		// res.status(200).json({ data: { ...otherData } });
 
