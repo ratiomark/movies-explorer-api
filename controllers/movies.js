@@ -42,7 +42,7 @@ const deleteMovie = async (req, res, next) => {
 		const movie = await Movie.findOne({ movieId });
 
 		if (!movie) throw ApiError.NotFound();
-		if (userId.toString() !== movie.owner.toString()) throw ApiError.Forbidden();
+		if (userId.toString() !== movie._doc.owner.toString()) throw ApiError.Forbidden();
 
 		const data = await movie.deleteOne();
 
